@@ -1,7 +1,7 @@
-const { Section } = require('../../models/index')
+const { Note } = require('../../models/index')
 
 async function store (params) {
-  return Section
+  return Note
     .create({
       ...params
     })
@@ -11,7 +11,13 @@ async function store (params) {
 }
 async function getAll (filters) {
     try {
-      return await Section.findAll()
+      return await Note.findAll({
+        include: [
+          {
+            association: 'Customer'
+          }
+        ]
+      })
     } catch (error) {
       throw error
     }
@@ -19,10 +25,10 @@ async function getAll (filters) {
 
 async function update (params, filters) {
   try {
-    await Section.update(params, {
+    await Note.update(params, {
       where: { ...filters }
     })
-    return await Section
+    return await Note
     .findOne({
       where: { ...filters }
     })
@@ -32,9 +38,14 @@ async function update (params, filters) {
 }
 
 async function getOne (filters) {
-  return Section
+  return Note
     .findOne({
-      where: { ...filters }
+      where: { ...filters },
+      include: [
+        {
+          association: 'Customer'
+        }
+      ]
     })
     .catch(error => {
       return Promise.reject(error)
@@ -43,7 +54,7 @@ async function getOne (filters) {
 
 async function destroy (filters) {
   try {
-    return Section.destroy({
+    return Note.destroy({
       where: { ...filters }
     })
   } catch (error) {

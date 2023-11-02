@@ -1,14 +1,14 @@
 const { check, body, checkSchema } = require('express-validator')
 
-const checkLogin = {
-  email : {
+const checkuser = {
+  email: {
     notEmpty: true,
-    errorMessage: 'El email no puede estar vacío.',
+    errorMessage: 'No puede estar vacío.'
   },
-  password: {
+  password : {
     notEmpty: true,
-    errorMessage: 'La contraseña no puede estar vacía.'
-  }
+    errorMessage: 'No puede estar vacío.'
+  },
 
 }
-module.exports = checkLogin
+module.exports = checkuser

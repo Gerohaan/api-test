@@ -1,11 +1,11 @@
-const sectionService = require('../services/section')
+const noteItemsService = require('../services/note')
 
-class sectionController {
+class noteItemsController {
   create = (req, res, next) => {
-    return sectionService
+    return noteItemsService
       .store(req.body)
-      .then(section => {
-        return res.status(200).json(section)
+      .then(response => {
+        return res.status(200).json(response)
       })
       .catch(err => {
         return res.status(400).send(err)
@@ -13,10 +13,10 @@ class sectionController {
   }
 
   list = (req, res, next) => {
-    return sectionService
+    return noteItemsService
       .getAll()
-      .then(section => {
-        return res.status(200).json(section)
+      .then(response => {
+        return res.status(200).json(response)
       })
       .catch(err => {
         return res.status(400).send(err)
@@ -24,12 +24,12 @@ class sectionController {
   }
 
   show = (req, res, next) => {
-    return sectionService
+    return noteItemsService
       .getOne({
         id: req.params.id
       })
-      .then(section => {
-        return res.status(200).json(section)
+      .then(response => {
+        return res.status(200).json(response)
       })
       .catch(err => {
         return res.status(400).send(err)
@@ -37,12 +37,12 @@ class sectionController {
   }
 
   update = (req, res, next) => {
-    return sectionService
+    return noteItemsService
       .update(req.body, {
         id: req.params.id
       })
-      .then(section => {
-        return res.status(200).json(section)
+      .then(response => {
+        return res.status(200).json(response)
       })
       .catch(err => {
         res.status(400).send(err)
@@ -51,10 +51,10 @@ class sectionController {
   
   async update2 (req, res, next) {
     try {
-      await sectionService.update2(req.body, {
+      await noteItemsService.update2(req.body, {
         id: req.params.id
       })
-      let data = await sectionService.getOne({
+      let data = await noteItemsService.getOne({
         id: req.params.id
       })
       res.status(200).json(data)
@@ -64,12 +64,12 @@ class sectionController {
   }
 
   delete = (req, res, next) => {
-    return sectionService
+    return noteItemsService
       .destroy({
         id: req.params.id
       })
       .then(() => {
-        res.status(200).json({ success: 'Sección Eliminada' })
+        res.status(200).json({ success: 'Item de la nota de venta eliminado' })
       })
       .catch(err => {
         res.status(400).send(err)
@@ -77,4 +77,4 @@ class sectionController {
   }
 }
 
-module.exports = new sectionController()
+module.exports = new noteItemsController()

@@ -1,11 +1,15 @@
 const { check, body, checkSchema } = require('express-validator')
 
 const checkSection = {
-  name: {
+  customer_id: {
     notEmpty: true,
     errorMessage: 'it cant be empty'
   },
-  description: {
+  date: {
+    notEmpty: true,
+    errorMessage: 'it cant be empty'
+  },
+  total: {
     notEmpty: true,
     errorMessage: 'it cant be empty'
   }

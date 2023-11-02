@@ -15,6 +15,8 @@ var indexRouter = require('./routes/index')
 var userRouter = require('./routes/user')
 var customerRouter = require('./routes/customer')
 var itemsRouter = require('./routes/items')
+var noteRouter = require('./routes/note')
+var noteItemsRouter = require('./routes/noteItems')
 //configuracion
 app.set('port', process.env.PORT || 3030)
 app.use(express.json())
@@ -40,6 +42,8 @@ app.use('/', indexRouter)
 app.use('/user', userRouter)
 app.use('/customer', customerRouter)
 app.use('/items', itemsRouter)
+app.use('/notes', noteRouter)
+app.use('/noteitems', noteItemsRouter)
 //Rutas use
 
 app.listen(app.get('port'), function () {
