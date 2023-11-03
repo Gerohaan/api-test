@@ -7,12 +7,12 @@ const validator = require('../middleware/validator')
 const auth = require('../middleware/auth')
 
 router.get('/list', 
-  auth, 
+  //auth, 
   controller.list
 )
 router.get(
   '/show/:id',
-  auth,
+  //auth,
   param('id').custom(id => {
     return itemsValidator.exists(id)
   }),

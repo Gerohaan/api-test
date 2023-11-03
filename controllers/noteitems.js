@@ -1,4 +1,4 @@
-const noteItemsService = require('../services/note')
+const noteItemsService = require('../services/noteItems')
 
 class noteItemsController {
   create = (req, res, next) => {
